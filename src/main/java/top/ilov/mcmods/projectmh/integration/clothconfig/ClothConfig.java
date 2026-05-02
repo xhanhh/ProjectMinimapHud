@@ -34,10 +34,25 @@ public class ClothConfig {
         );
 
         client.addEntry(entryBuilder
-                .startBooleanToggle(Component.translatable("config.projectminimaphud.enable_xaerominimap_emc_display_hold_shift_show_full"),
+                .startEnumSelector(
+                        Component.translatable("config.projectminimaphud.xaerominimap_emc_display_mode"),
+                        ProjectConfig.EMCDisplayMode.class,
+                        ProjectHudMod.CONFIG.getXaeroMinimapEMCDisplayMode()
+                )
+                .setEnumNameProvider(value -> Component.translatable(
+                        "config.projectminimaphud.xaerominimap_emc_display_mode." + value.name().toLowerCase()
+                ))
+                .setDefaultValue(ProjectConfig.EMCDisplayMode.SHORT)
+                .setTooltip(Component.translatable("config.projectminimaphud.xaerominimap_emc_display_mode.tooltip"))
+                .setSaveConsumer(newValue -> ProjectHudMod.CONFIG.setXaeroMinimapEMCDisplayMode(newValue))
+                .build()
+        );
+
+        client.addEntry(entryBuilder
+                .startBooleanToggle(Component.translatable("config.projectminimaphud.enable_xaerominimap_emc_display_shift_toggle"),
                         ProjectHudMod.CONFIG.isEnableXaeroMinimapEMCDisplayHoldShiftShowFull())
                 .setDefaultValue(true)
-                .setTooltip(Component.translatable("config.projectminimaphud.enable_xaerominimap_emc_display_hold_shift_show_full.tooltip"))
+                .setTooltip(Component.translatable("config.projectminimaphud.enable_xaerominimap_emc_display_shift_toggle.tooltip"))
                 .setSaveConsumer(newValue ->
                         ProjectHudMod.CONFIG.setEnableXaeroMinimapEMCDisplayHoldShiftShowFull(newValue))
                 .build()

@@ -12,6 +12,7 @@ import net.minecraft.network.chat.MutableComponent;
 import net.minecraft.network.chat.Style;
 import net.minecraft.resources.ResourceLocation;
 import top.ilov.mcmods.projectmh.ProjectHudMod;
+import top.ilov.mcmods.projectmh.ProjectConfig;
 import top.ilov.mcmods.projectmh.mixin.ProjectMixinPlugin;
 import xaero.hud.minimap.info.InfoDisplay;
 import xaero.hud.minimap.info.render.compile.InfoDisplayCompiler;
@@ -47,10 +48,7 @@ public final class EMCDisplay {
             net.minecraft.core.BlockPos playerPos
     ) {
 
-        if (!Boolean.TRUE.equals(displayInfo.getEffectiveState())) {
-            return;
-        }
-        if (ProjectMixinPlugin.CONFIG == null || !ProjectMixinPlugin.CONFIG.isEnableXaeroMinimapEMCDisplay()) {
+        if (!shouldCompile(displayInfo)) {
             return;
         }
 
@@ -65,31 +63,60 @@ public final class EMCDisplay {
         }
 
         BigInteger emc = provider.getEmc();
-        boolean showFull = ProjectMixinPlugin.CONFIG.isEnableXaeroMinimapEMCDisplayHoldShiftShowFull() && Screen.hasShiftDown();
-        String emcText = showFull ? formatFull(emc) : formatShort(emc);
+        boolean showFull = shouldShowFullValue();
+        MutableComponent line = buildEmcLine(emc, showFull);
 
+        if (ProjectMixinPlugin.CONFIG.isEnableXaeroMinimapEMCDisplayRate()) {
+            appendRateText(line, emc, showFull);
+        }
+
+        compiler.addLine(line);
+    }
+
+    private static boolean shouldCompile(InfoDisplay<Boolean> displayInfo) {
+
+        return Boolean.TRUE.equals(displayInfo.getEffectiveState())
+                && ProjectMixinPlugin.CONFIG != null
+                && ProjectMixinPlugin.CONFIG.isEnableXaeroMinimapEMCDisplay();
+    }
+
+    private static boolean shouldShowFullValue() {
+
+        ProjectConfig.EMCDisplayMode mode = ProjectMixinPlugin.CONFIG.getXaeroMinimapEMCDisplayMode();
+        boolean shiftEnabled = ProjectMixinPlugin.CONFIG.isEnableXaeroMinimapEMCDisplayHoldShiftShowFull();
+        boolean shiftDown = shiftEnabled && Screen.hasShiftDown();
+
+        boolean defaultShowFull = mode == ProjectConfig.EMCDisplayMode.FULL;
+        return shiftDown != defaultShowFull;
+    }
+
+    private static MutableComponent buildEmcLine(BigInteger emc, boolean showFull) {
         MutableComponent line = Component.empty();
         if (ProjectMixinPlugin.CONFIG.isEnableXaeroMinimapEMCIcon()) {
             line.append(Component.literal(PE_ICON_CHAR).withStyle(PE_ICON_STYLE))
                     .append(Component.literal(" "));
         }
 
-        line.append(Component.literal("EMC: ")
+        return line.append(Component.literal("EMC: ")
                 .withStyle(ChatFormatting.GRAY)
-                .append(Component.literal(emcText).withStyle(ChatFormatting.LIGHT_PURPLE)));
+                .append(Component.literal(formatValue(emc, showFull)).withStyle(ChatFormatting.LIGHT_PURPLE)));
+    }
 
-        if (ProjectMixinPlugin.CONFIG.isEnableXaeroMinimapEMCDisplayRate()) {
-            BigInteger rate = getAverageRatePerSecond(emc);
-            if (rate.signum() != 0) {
-                ChatFormatting rateColor = getRateColor(rate);
-                String rateValue = showFull ? formatFull(rate.abs()) : formatShort(rate.abs());
-                String rateText = (rate.signum() > 0 ? "+" : "-") + rateValue + "/s";
-                line.append(Component.literal(" "))
-                        .append(Component.literal(rateText).withStyle(rateColor));
-            }
+    private static void appendRateText(MutableComponent line, BigInteger emc, boolean showFull) {
+
+        BigInteger rate = getAverageRatePerSecond(emc);
+        if (rate.signum() == 0) {
+            return;
         }
 
-        compiler.addLine(line);
+        String rateText = (rate.signum() > 0 ? "+" : "-") + formatValue(rate.abs(), showFull) + "/s";
+        line.append(Component.literal(" "))
+                .append(Component.literal(rateText).withStyle(getRateColor(rate)));
+
+    }
+
+    private static String formatValue(BigInteger value, boolean showFull) {
+        return showFull ? formatFull(value) : formatShort(value);
     }
 
     private static BigInteger getAverageRatePerSecond(BigInteger currentEmc) {

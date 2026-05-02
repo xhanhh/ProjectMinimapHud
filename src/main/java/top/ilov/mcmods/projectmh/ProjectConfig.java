@@ -17,6 +17,11 @@ import java.nio.file.Files;
 @Data
 public final class ProjectConfig {
 
+    public enum EMCDisplayMode {
+        SHORT,
+        FULL
+    }
+
     private boolean isEnableXaeroMinimapEMCDisplay;
 
     private boolean isEnableXaeroMinimapEMCDisplayHoldShiftShowFull;
@@ -25,10 +30,13 @@ public final class ProjectConfig {
 
     private boolean isEnableXaeroMinimapEMCIcon;
 
+    private EMCDisplayMode xaeroMinimapEMCDisplayMode;
+
     private static final boolean DEFAULT_ENABLE_XAERO_MINIMAP_EMC_DISPLAY = true;
     private static final boolean DEFAULT_XAERO_MINIMAP_EMC_SHIFT_FULL = true;
     private static final boolean DEFAULT_XAERO_MINIMAP_EMC_RATE = false;
     private static final boolean DEFAULT_XAERO_MINIMAP_EMC_ICON = true;
+    private static final EMCDisplayMode DEFAULT_XAERO_MINIMAP_EMC_DISPLAY_MODE = EMCDisplayMode.SHORT;
 
     static File config = new File(FMLUtils.getConfigDir().toFile(), "projectminimaphud-client.json");
 
@@ -40,6 +48,7 @@ public final class ProjectConfig {
         defaultConfig.isEnableXaeroMinimapEMCDisplayHoldShiftShowFull = DEFAULT_XAERO_MINIMAP_EMC_SHIFT_FULL;
         defaultConfig.isEnableXaeroMinimapEMCDisplayRate = DEFAULT_XAERO_MINIMAP_EMC_RATE;
         defaultConfig.isEnableXaeroMinimapEMCIcon = DEFAULT_XAERO_MINIMAP_EMC_ICON;
+        defaultConfig.xaeroMinimapEMCDisplayMode = DEFAULT_XAERO_MINIMAP_EMC_DISPLAY_MODE;
 
         if (!config.exists()) {
             write(defaultConfig);
@@ -73,6 +82,14 @@ public final class ProjectConfig {
         }
         if (!json.has("isEnableXaeroMinimapEMCIcon")) {
             loaded.isEnableXaeroMinimapEMCIcon = DEFAULT_XAERO_MINIMAP_EMC_ICON;
+            changed = true;
+        }
+
+        if (!json.has("xaeroMinimapEMCDisplayMode")) {
+            loaded.xaeroMinimapEMCDisplayMode = DEFAULT_XAERO_MINIMAP_EMC_DISPLAY_MODE;
+            changed = true;
+        } else if (loaded.xaeroMinimapEMCDisplayMode == null) {
+            loaded.xaeroMinimapEMCDisplayMode = DEFAULT_XAERO_MINIMAP_EMC_DISPLAY_MODE;
             changed = true;
         }
 

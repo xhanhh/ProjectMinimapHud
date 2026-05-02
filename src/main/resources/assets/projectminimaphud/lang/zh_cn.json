@@ -5,10 +5,14 @@
   "config.projectminimaphud.client": "客户端",
   "config.projectminimaphud.enable_xaerominimap_emc_display": "在 Xaero的小地图 信息显示中显示当前 EMC",
   "config.projectminimaphud.enable_xaerominimap_emc_display.tooltip": "此选项优先级最高。",
-  "config.projectminimaphud.enable_xaerominimap_emc_display_hold_shift_show_full": "按住 Shift 时显示完整 EMC 数字",
-  "config.projectminimaphud.enable_xaerominimap_emc_display_hold_shift_show_full.tooltip": "启用后按住 Shift 时显示完整 EMC 数字：111,111,111",
+  "config.projectminimaphud.xaerominimap_emc_display_mode": "EMC 默认显示格式",
+  "config.projectminimaphud.xaerominimap_emc_display_mode.tooltip": "简短：数字带如M这样的单位，全显示：显示完整数字（111,111,111）",
+  "config.projectminimaphud.xaerominimap_emc_display_mode.short": "简短",
+  "config.projectminimaphud.xaerominimap_emc_display_mode.full": "全显示",
+  "config.projectminimaphud.enable_xaerominimap_emc_display_shift_toggle": "允许按住 Shift 时临时切换显示格式",
+  "config.projectminimaphud.enable_xaerominimap_emc_display_shift_toggle.tooltip": "简短格式将会显示全显示风格，反之亦然",
   "config.projectminimaphud.enable_xaerominimap_emc_display_rate": "显示当前 EMC 变化速率",
   "config.projectminimaphud.enable_xaerominimap_emc_display_rate.tooltip": "当 EMC 发生变化时显示变化速率提示。",
   "config.projectminimaphud.enable_xaerominimap_emc_icon": "显示 ProjectE 图标于 EMC 左侧",
-  "config.projectminimaphud.enable_xaerominimap_emc_icon.tooltip": "在小地图的 EMC 显示左侧添加 等价交换图标。"
+  "config.projectminimaphud.enable_xaerominimap_emc_icon.tooltip": "在小地图的 EMC 显示左侧添加等价交换模组图标。"
 }
