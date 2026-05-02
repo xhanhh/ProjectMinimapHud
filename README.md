@@ -1,7 +1,7 @@
 
 ## Project Minimap Hud
 
-This mod integrated display of player/team EMC and EMC change rate in [Xaero's Minimap](https://modrinth.com/mod/xaeros-minimap) display info.
+This mod integrated display of player's EMC and EMC change rate in [Xaero's Minimap](https://modrinth.com/mod/xaeros-minimap) display info.
 
 The display style of this mod is configurable, and we highly recommend that you install Cloth Config for easier modification of the configuration.
 
