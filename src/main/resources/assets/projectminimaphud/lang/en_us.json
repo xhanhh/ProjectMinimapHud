@@ -8,5 +8,7 @@
   "config.projectminimaphud.enable_xaerominimap_emc_display_hold_shift_show_full": "Displays the full EMC number when Shift is held down",
   "config.projectminimaphud.enable_xaerominimap_emc_display_hold_shift_show_full.tooltip": "When enabled, displays the full EMC number (111,111,111) when Shift is held down.",
   "config.projectminimaphud.enable_xaerominimap_emc_display_rate": "Displays the current EMC rate of change",
-  "config.projectminimaphud.enable_xaerominimap_emc_display_rate.tooltip": "Displays a rate of change indicator when the EMC changes."
+  "config.projectminimaphud.enable_xaerominimap_emc_display_rate.tooltip": "Displays a rate of change indicator when the EMC changes.",
+  "config.projectminimaphud.enable_xaerominimap_emc_icon": "Displays the ProjectE icon before EMC text",
+  "config.projectminimaphud.enable_xaerominimap_emc_icon.tooltip": "Add ProjectE icon to the left of the EMC display on the minimap."
 }

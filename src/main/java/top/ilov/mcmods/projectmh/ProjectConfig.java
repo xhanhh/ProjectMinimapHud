@@ -23,9 +23,12 @@ public final class ProjectConfig {
 
     private boolean isEnableXaeroMinimapEMCDisplayRate;
 
+    private boolean isEnableXaeroMinimapEMCIcon;
+
     private static final boolean DEFAULT_ENABLE_XAERO_MINIMAP_EMC_DISPLAY = true;
     private static final boolean DEFAULT_XAERO_MINIMAP_EMC_SHIFT_FULL = true;
     private static final boolean DEFAULT_XAERO_MINIMAP_EMC_RATE = false;
+    private static final boolean DEFAULT_XAERO_MINIMAP_EMC_ICON = true;
 
     static File config = new File(FMLUtils.getConfigDir().toFile(), "projectminimaphud-client.json");
 
@@ -36,6 +39,7 @@ public final class ProjectConfig {
         defaultConfig.isEnableXaeroMinimapEMCDisplay = DEFAULT_ENABLE_XAERO_MINIMAP_EMC_DISPLAY;
         defaultConfig.isEnableXaeroMinimapEMCDisplayHoldShiftShowFull = DEFAULT_XAERO_MINIMAP_EMC_SHIFT_FULL;
         defaultConfig.isEnableXaeroMinimapEMCDisplayRate = DEFAULT_XAERO_MINIMAP_EMC_RATE;
+        defaultConfig.isEnableXaeroMinimapEMCIcon = DEFAULT_XAERO_MINIMAP_EMC_ICON;
 
         if (!config.exists()) {
             write(defaultConfig);
@@ -65,6 +69,10 @@ public final class ProjectConfig {
         }
         if (!json.has("isEnableXaeroMinimapEMCDisplayRate")) {
             loaded.isEnableXaeroMinimapEMCDisplayRate = DEFAULT_XAERO_MINIMAP_EMC_RATE;
+            changed = true;
+        }
+        if (!json.has("isEnableXaeroMinimapEMCIcon")) {
+            loaded.isEnableXaeroMinimapEMCIcon = DEFAULT_XAERO_MINIMAP_EMC_ICON;
             changed = true;
         }
 

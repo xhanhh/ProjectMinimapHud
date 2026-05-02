@@ -44,6 +44,15 @@ public class ClothConfig {
         );
 
         client.addEntry(entryBuilder
+                .startBooleanToggle(Component.translatable("config.projectminimaphud.enable_xaerominimap_emc_icon"),
+                        ProjectHudMod.CONFIG.isEnableXaeroMinimapEMCIcon())
+                .setDefaultValue(true)
+                .setTooltip(Component.translatable("config.projectminimaphud.enable_xaerominimap_emc_icon.tooltip"))
+                .setSaveConsumer(newValue -> ProjectHudMod.CONFIG.setEnableXaeroMinimapEMCIcon(newValue))
+                .build()
+        );
+
+        client.addEntry(entryBuilder
                 .startBooleanToggle(Component.translatable("config.projectminimaphud.enable_xaerominimap_emc_display_rate"),
                         ProjectHudMod.CONFIG.isEnableXaeroMinimapEMCDisplayRate())
                 .setDefaultValue(false)
