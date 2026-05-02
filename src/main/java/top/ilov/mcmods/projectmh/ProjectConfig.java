@@ -22,8 +22,6 @@ public final class ProjectConfig {
         FULL
     }
 
-    private boolean isEnableXaeroMinimapEMCDisplay;
-
     private boolean isEnableXaeroMinimapEMCDisplayHoldShiftShowFull;
 
     private boolean isEnableXaeroMinimapEMCDisplayRate;
@@ -32,7 +30,6 @@ public final class ProjectConfig {
 
     private EMCDisplayMode xaeroMinimapEMCDisplayMode;
 
-    private static final boolean DEFAULT_ENABLE_XAERO_MINIMAP_EMC_DISPLAY = true;
     private static final boolean DEFAULT_XAERO_MINIMAP_EMC_SHIFT_FULL = true;
     private static final boolean DEFAULT_XAERO_MINIMAP_EMC_RATE = false;
     private static final boolean DEFAULT_XAERO_MINIMAP_EMC_ICON = true;
@@ -44,7 +41,6 @@ public final class ProjectConfig {
     public static ProjectConfig loadConfig() {
 
         ProjectConfig defaultConfig = new ProjectConfig();
-        defaultConfig.isEnableXaeroMinimapEMCDisplay = DEFAULT_ENABLE_XAERO_MINIMAP_EMC_DISPLAY;
         defaultConfig.isEnableXaeroMinimapEMCDisplayHoldShiftShowFull = DEFAULT_XAERO_MINIMAP_EMC_SHIFT_FULL;
         defaultConfig.isEnableXaeroMinimapEMCDisplayRate = DEFAULT_XAERO_MINIMAP_EMC_RATE;
         defaultConfig.isEnableXaeroMinimapEMCIcon = DEFAULT_XAERO_MINIMAP_EMC_ICON;
@@ -68,10 +64,6 @@ public final class ProjectConfig {
 
         boolean changed = false;
 
-        if (!json.has("isEnableXaeroMinimapEMCDisplay")) {
-            loaded.isEnableXaeroMinimapEMCDisplay = DEFAULT_ENABLE_XAERO_MINIMAP_EMC_DISPLAY;
-            changed = true;
-        }
         if (!json.has("isEnableXaeroMinimapEMCDisplayHoldShiftShowFull")) {
             loaded.isEnableXaeroMinimapEMCDisplayHoldShiftShowFull = DEFAULT_XAERO_MINIMAP_EMC_SHIFT_FULL;
             changed = true;

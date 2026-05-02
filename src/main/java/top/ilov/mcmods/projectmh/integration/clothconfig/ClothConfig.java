@@ -7,7 +7,6 @@ import net.minecraft.client.gui.screens.Screen;
 import net.minecraft.network.chat.Component;
 import top.ilov.mcmods.projectmh.ProjectConfig;
 import top.ilov.mcmods.projectmh.ProjectHudMod;
-import top.ilov.mcmods.projectmh.mixin.ProjectMixinPlugin;
 
 public class ClothConfig {
 
@@ -16,22 +15,10 @@ public class ClothConfig {
         ConfigBuilder builder = ConfigBuilder.create()
                 .setTitle(Component.translatable("config.projectminimaphud.title"))
                 .setParentScreen(parent)
-                .setSavingRunnable(() -> {
-                    ProjectConfig.write(ProjectHudMod.CONFIG);
-                    ProjectMixinPlugin.CONFIG = ProjectHudMod.CONFIG;
-                });
+                .setSavingRunnable(() -> ProjectConfig.write(ProjectHudMod.CONFIG));
 
         ConfigCategory client = builder.getOrCreateCategory(Component.translatable("config.projectminimaphud.client"));
         ConfigEntryBuilder entryBuilder = builder.entryBuilder();
-
-        client.addEntry(entryBuilder
-                .startBooleanToggle(Component.translatable("config.projectminimaphud.enable_xaerominimap_emc_display"),
-                        ProjectHudMod.CONFIG.isEnableXaeroMinimapEMCDisplay())
-                .setDefaultValue(true)
-                .setTooltip(Component.translatable("config.projectminimaphud.enable_xaerominimap_emc_display.tooltip"))
-                .setSaveConsumer(newValue -> ProjectHudMod.CONFIG.setEnableXaeroMinimapEMCDisplay(newValue))
-                .build()
-        );
 
         client.addEntry(entryBuilder
                 .startEnumSelector(

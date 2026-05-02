@@ -11,9 +11,8 @@ import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.MutableComponent;
 import net.minecraft.network.chat.Style;
 import net.minecraft.resources.ResourceLocation;
-import top.ilov.mcmods.projectmh.ProjectHudMod;
 import top.ilov.mcmods.projectmh.ProjectConfig;
-import top.ilov.mcmods.projectmh.mixin.ProjectMixinPlugin;
+import top.ilov.mcmods.projectmh.ProjectHudMod;
 import xaero.hud.minimap.info.InfoDisplay;
 import xaero.hud.minimap.info.render.compile.InfoDisplayCompiler;
 import xaero.hud.minimap.module.MinimapSession;
@@ -66,7 +65,7 @@ public final class EMCDisplay {
         boolean showFull = shouldShowFullValue();
         MutableComponent line = buildEmcLine(emc, showFull);
 
-        if (ProjectMixinPlugin.CONFIG.isEnableXaeroMinimapEMCDisplayRate()) {
+        if (ProjectHudMod.CONFIG.isEnableXaeroMinimapEMCDisplayRate()) {
             appendRateText(line, emc, showFull);
         }
 
@@ -74,16 +73,13 @@ public final class EMCDisplay {
     }
 
     private static boolean shouldCompile(InfoDisplay<Boolean> displayInfo) {
-
-        return Boolean.TRUE.equals(displayInfo.getEffectiveState())
-                && ProjectMixinPlugin.CONFIG != null
-                && ProjectMixinPlugin.CONFIG.isEnableXaeroMinimapEMCDisplay();
+        return Boolean.TRUE.equals(displayInfo.getEffectiveState());
     }
 
     private static boolean shouldShowFullValue() {
 
-        ProjectConfig.EMCDisplayMode mode = ProjectMixinPlugin.CONFIG.getXaeroMinimapEMCDisplayMode();
-        boolean shiftEnabled = ProjectMixinPlugin.CONFIG.isEnableXaeroMinimapEMCDisplayHoldShiftShowFull();
+        ProjectConfig.EMCDisplayMode mode = ProjectHudMod.CONFIG.getXaeroMinimapEMCDisplayMode();
+        boolean shiftEnabled = ProjectHudMod.CONFIG.isEnableXaeroMinimapEMCDisplayHoldShiftShowFull();
         boolean shiftDown = shiftEnabled && Screen.hasShiftDown();
 
         boolean defaultShowFull = mode == ProjectConfig.EMCDisplayMode.FULL;
@@ -92,7 +88,7 @@ public final class EMCDisplay {
 
     private static MutableComponent buildEmcLine(BigInteger emc, boolean showFull) {
         MutableComponent line = Component.empty();
-        if (ProjectMixinPlugin.CONFIG.isEnableXaeroMinimapEMCIcon()) {
+        if (ProjectHudMod.CONFIG.isEnableXaeroMinimapEMCIcon()) {
             line.append(Component.literal(PE_ICON_CHAR).withStyle(PE_ICON_STYLE))
                     .append(Component.literal(" "));
         }

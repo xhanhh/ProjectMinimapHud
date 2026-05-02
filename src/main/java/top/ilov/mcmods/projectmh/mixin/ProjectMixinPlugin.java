@@ -3,7 +3,6 @@ package top.ilov.mcmods.projectmh.mixin;
 import org.objectweb.asm.tree.ClassNode;
 import org.spongepowered.asm.mixin.extensibility.IMixinConfigPlugin;
 import org.spongepowered.asm.mixin.extensibility.IMixinInfo;
-import top.ilov.mcmods.projectmh.ProjectConfig;
 import top.ilov.mcmods.projectmh.utils.FMLUtils;
 
 import java.util.List;
@@ -11,15 +10,9 @@ import java.util.Set;
 
 public class ProjectMixinPlugin implements IMixinConfigPlugin {
 
-    public static ProjectConfig CONFIG = new ProjectConfig();
-
     @Override
     public void onLoad(String mixinPackage) {
-        try {
-            CONFIG = ProjectConfig.loadConfig();
-        } catch (Exception e) {
-            CONFIG = new ProjectConfig();
-        }
+
     }
 
     @Override
@@ -32,8 +25,7 @@ public class ProjectMixinPlugin implements IMixinConfigPlugin {
         return switch (mixinClassName) {
 
             case "top.ilov.mcmods.projectmh.mixin.xaero.XaeroDisplayMixin" ->
-                    FMLUtils.isClassPresent("xaero.hud.minimap.info.BuiltInInfoDisplays")
-                            && CONFIG.isEnableXaeroMinimapEMCDisplay();
+                    FMLUtils.isClassPresent("xaero.hud.minimap.info.BuiltInInfoDisplays");
 
             default -> false;
         };

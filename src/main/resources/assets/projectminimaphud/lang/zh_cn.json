@@ -3,8 +3,6 @@
 
   "config.projectminimaphud.title": "等价交换：小地图Hud 配置",
   "config.projectminimaphud.client": "客户端",
-  "config.projectminimaphud.enable_xaerominimap_emc_display": "在 Xaero的小地图 信息显示中显示当前 EMC",
-  "config.projectminimaphud.enable_xaerominimap_emc_display.tooltip": "此选项优先级最高。",
   "config.projectminimaphud.xaerominimap_emc_display_mode": "EMC 默认显示格式",
   "config.projectminimaphud.xaerominimap_emc_display_mode.tooltip": "简短：数字带如M这样的单位，全显示：显示完整数字（111,111,111）",
   "config.projectminimaphud.xaerominimap_emc_display_mode.short": "简短",

@@ -3,8 +3,6 @@
 
   "config.projectminimaphud.title": "Project Minimap Hud Config",
   "config.projectminimaphud.client": "Client",
-  "config.projectminimaphud.enable_xaerominimap_emc_display": "Displays the current EMC in the Xaero's Minimap information display",
-  "config.projectminimaphud.enable_xaerominimap_emc_display.tooltip": "This option has the highest priority.",
   "config.projectminimaphud.xaerominimap_emc_display_mode": "EMC default display format",
   "config.projectminimaphud.xaerominimap_emc_display_mode.tooltip": "Short: Numbers with units like M; Full: Displays the complete number (111,111,111).",
   "config.projectminimaphud.xaerominimap_emc_display_mode.short": "Short",
