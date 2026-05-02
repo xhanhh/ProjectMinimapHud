@@ -1,0 +1,12 @@
+{
+  "xaerominimap.projectminimaphud.infodisplay.pe_emc": "ProjectE EMC",
+
+  "config.projectminimaphud.title": "Project Minimap Hud Config",
+  "config.projectminimaphud.client": "Client",
+  "config.projectminimaphud.enable_xaerominimap_emc_display": "Displays the current EMC in the Xaero's Minimap information display",
+  "config.projectminimaphud.enable_xaerominimap_emc_display.tooltip": "This option has the highest priority.",
+  "config.projectminimaphud.enable_xaerominimap_emc_display_hold_shift_show_full": "Displays the full EMC number when Shift is held down",
+  "config.projectminimaphud.enable_xaerominimap_emc_display_hold_shift_show_full.tooltip": "When enabled, displays the full EMC number (111,111,111) when Shift is held down.",
+  "config.projectminimaphud.enable_xaerominimap_emc_display_rate": "Displays the current EMC rate of change",
+  "config.projectminimaphud.enable_xaerominimap_emc_display_rate.tooltip": "Displays a rate of change indicator when the EMC changes."
+}

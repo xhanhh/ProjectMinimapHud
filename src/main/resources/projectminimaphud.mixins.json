@@ -1,0 +1,15 @@
+{
+  "required": true,
+  "minVersion": "0.8",
+  "package": "top.ilov.mcmods.projectmh.mixin",
+  "plugin": "top.ilov.mcmods.projectmh.mixin.ProjectMixinPlugin",
+  "mixins": [
+
+  ],
+  "client": [
+    "xaero.XaeroDisplayMixin"
+  ],
+  "injectors": {
+    "defaultRequire": 1
+  }
+}
