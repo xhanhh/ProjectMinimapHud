@@ -1,25 +1,15 @@
 
-Installation information
-=======
+## Project Minimap Hud
 
-This template repository can be directly cloned to get you started with a new
-mod. Simply create a new repository cloned from this one, by following the
-instructions provided by [GitHub](https://docs.github.com/en/repositories/creating-and-managing-repositories/creating-a-repository-from-a-template).
+This mod integrated display of player/team EMC and EMC change rate in [Xaero's Minimap](https://modrinth.com/mod/xaeros-minimap) display info.
 
-Once you have your clone, simply open the repository in the IDE of your choice. The usual recommendation for an IDE is either IntelliJ IDEA or Eclipse.
+The display style of this mod is configurable, and we highly recommend that you install Cloth Config for easier modification of the configuration.
 
-If at any point you are missing libraries in your IDE, or you've run into problems you can
-run `gradlew --refresh-dependencies` to refresh the local cache. `gradlew clean` to reset everything 
-{this does not affect your code} and then start the process again.
+### Thanks
 
-Mapping Names:
-============
-By default, the MDK is configured to use the official mapping names from Mojang for methods and fields 
-in the Minecraft codebase. These names are covered by a specific license. All modders should be aware of this
-license. For the latest license text, refer to the mapping file itself, or the reference copy here:
-https://github.com/NeoForged/NeoForm/blob/main/Mojang.md
+- Thanks to [DonovanDMC](https://github.com/DonovanDMC) and his mod [Project Expansion](https://modrinth.com/mod/project-expansion) for providing EMC formatting templates for this mod.
+- Thanks to [lanAnderson](https://github.com/lanAnderson) and his/her mod [SeasonHud](https://modrinth.com/mod/seasonhud) for inspiring the EMC display style for this mod.
 
-Additional Resources: 
-==========
-Community Documentation: https://docs.neoforged.net/  
-NeoForged Discord: https://discord.neoforged.net/
+### License
+
+This project is licensed under the MIT License.
