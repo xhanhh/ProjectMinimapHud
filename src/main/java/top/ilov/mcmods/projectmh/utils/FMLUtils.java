@@ -1,8 +1,8 @@
 package top.ilov.mcmods.projectmh.utils;
 
 import lombok.experimental.UtilityClass;
-import net.neoforged.fml.ModList;
-import net.neoforged.fml.loading.FMLPaths;
+import net.minecraftforge.fml.ModList;
+import net.minecraftforge.fml.loading.FMLPaths;
 import org.spongepowered.asm.service.MixinService;
 
 import java.io.IOException;

@@ -12,10 +12,10 @@ import xaero.hud.minimap.info.InfoDisplay;
 import java.util.List;
 import java.util.Objects;
 
-@Mixin(BuiltInInfoDisplays.class)
+@Mixin(value = BuiltInInfoDisplays.class, remap = false)
 public class XaeroDisplayMixin {
 
-    @Shadow
+    @Shadow(remap = false)
     private static List<InfoDisplay<?>> ALL;
 
     @Inject(method = "<clinit>", at = @At("TAIL"), remap = false)

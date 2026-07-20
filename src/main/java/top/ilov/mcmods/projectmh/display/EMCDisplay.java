@@ -56,7 +56,9 @@ public final class EMCDisplay {
             return;
         }
 
-        IKnowledgeProvider provider = mc.player.getCapability(PECapabilities.KNOWLEDGE_CAPABILITY);
+        IKnowledgeProvider provider = mc.player.getCapability(PECapabilities.KNOWLEDGE_CAPABILITY)
+                .resolve()
+                .orElse(null);
         if (provider == null) {
             return;
         }
